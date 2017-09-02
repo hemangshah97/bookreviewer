@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :books do
+
+  get 'sign_up/new'
+   resources :books do
     resources :notes, only: [:create, :destroy]
-  end
+   end
+  resources :reviewer, only: [:new, :create]
   root to: "books#index"
   resources :sessions, only: [:new, :create, :destroy]
   get "/login" => "sessions#new", as: "login"
